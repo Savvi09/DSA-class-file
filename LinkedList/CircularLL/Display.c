@@ -14,13 +14,13 @@ void create(int A[100],int n)
 	struct Node *t,*last;
 	head=(struct Node*)malloc(sizeof(struct Node));
 	head->Data=A[0];
-	head->next=NULL;
+	head->next=head;
 	last=head;
 	for(i=1;i<n;i++)
 	{
 		t = (struct Node *)malloc(sizeof(struct Node));
 		t->Data=A[i];
-		t->next=NULL;
+		t->next=head;
 		last->next = t;
 		last=t;
 	}
