@@ -37,6 +37,29 @@ void pop()
     	free(t);
 	}
 }
+
+void IsFull()
+{
+
+	struct Node *t;
+	t=(struct Node *)malloc(sizeof(struct Node));
+	
+	if(t==NULL)
+	    printf("Stack is Full\n");
+	else
+	    printf("Not Full\n");
+}
+
+void IsEmpty()
+ {
+ 	struct Node *t;
+    if(top==NULL)
+        printf("Stack is empty\n");
+    else
+        printf("Not Empty\n");
+ }	  
+ 
+  
 void display()
 {
     struct Node *p;
@@ -61,6 +84,8 @@ int main()
 	
 	pop();
 	display();
+	IsFull();
+	IsEmpty();
 }
 
 
