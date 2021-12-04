@@ -11,16 +11,15 @@ struct Stack
 
 void create(struct Stack *st)
 {
-	printf("Enter Size:");
+	printf("Enter the Size of arry:");
 	scanf("%d",&st->size);
 	st->top=-1;
-	st->S=(int *)malloc(st->size*sizeof(int));
+	st->S=(int *)malloc(st->size*sizeof(int));	
 }
-
-void Display(struct Stack st)
-{   
-    printf("\nREADY TO DISPlAY.......\n");
+void display(struct Stack st)
+{
 	int i;
+	printf("Resulted elements on stack :");
 	for(i=st.top;i>=0;i--)
 	{
 		printf("%d ",st.S[i]);
@@ -30,81 +29,101 @@ void Display(struct Stack st)
 void push(struct Stack *st, int x)
 {
 	if(st->top==st->size-1)
-	     printf("Stack Overflow");
-    else 
-        {
-         	st->top++;
-         	st->S[st->top]=x;
-     	}
+	{
+		printf("Stack Overflow");
+	}
+	else
+	{
+		st->top++;
+		st->S[st->top]=x;
+	}
 }
 void pop(struct Stack *st)
 {
 	int x=-1;
 	if(st->top==-1)
-	{
-		printf("Stack Underflow");
-	}
+	   printf("Stack Underflow");
 	else
 	{
 		x=st->S[st->top];
 		st->top--;
-		printf("Delete value- %d\n ",x);
 	}
-	
 }
-
-void peek(struct Stack st,int pos)
+void peek(struct Stack st, int pos)
 {
-	int i=-1;
-	int x;
+	int x=-1;
 	if(st.top-pos+1<0)
-        printf("Invalid Position");
+         printf("\nInvalid position\n");
     else
     {
-       x=st.S[st.top-pos+1];
-	   printf("Position value - %d\n",x);	
-	}	
+    	x=st.S[st.top-pos+1];
+    	printf("\nindex no.%d ---- element is : %d\n",pos,x);
+	}
+}
+void IsEmpty(struct Stack st)
+{
+	if(st.top==-1)
+	{
+		printf("Stack is Empty\n");
+	}
+	else
+	{
+		printf("NOT EMPTY\n");
+	}
 }
 
+void IsFull(struct Stack st)
+{
+	if(st.top==st.size-1)
+	{
+		printf("Stack is Full\n");
+	}
+	else
+	{
+		printf("NOT FULL\n");
+	}
+}
 int StackTop(struct Stack st)
 {
 	if(st.top==-1)
+	{
 		return -1;
+	}
 	else
-	    return st.S[st.top]; 	   
+	{
+		return st.S[st.top];
+	}
 }
 
-int  IsEmpty(struct Stack st)
-{
-	if(st.top==-1)
-	    return 1;
-	else
-	    return 0;
-}
-
-int IsFull(struct Stack st)
-{
-	if(st.top==st.size-1)
-	   return 1;
-	else
-	   return 0;	
-}
 
 int main()
 {
+	int a;
 	struct Stack st;
 	create(&st);
-	push(&st,15);
-	push(&st,24);
-	push(&st,5);
-	push(&st,19);
-	push(&st,29);
+	
+	push(&st,10);
+	push(&st,20);
+	push(&st,30);
+	push(&st,40);
+	push(&st,50);
+	push(&st,60);
+	push(&st,70);
+	push(&st,80);
+	push(&st,90);
 	
 	pop(&st);
-	peek(st,2);
+	pop(&st);
 	
-	Display(st);
-	printf("%d \n",IsFull(st));
-	printf("%d \n",StackTop(st));
+
+	display(st);
+	
+	peek(st,2);
+	IsEmpty(st);
+	IsFull(st);
+	a=StackTop(st);
+     printf("Top most Element is %d",a);
+	
 }
+
 
